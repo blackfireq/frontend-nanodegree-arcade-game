@@ -8,8 +8,8 @@ class Enemy {
     constructor(speed,row){
       this.sprite = 'images/enemy-bug.png';
       this.x = -101;
-      this.y = row;
-      this.speed = speed;
+      this.y = this.getRow();
+      this.speed = this.getSpeed();
       //row1: 60
       //row2: 143
       //row3: 226
@@ -31,7 +31,17 @@ class Enemy {
         return Resources.get(this.sprite).height;
     }
 
+    //get speed of enemy
+    getSpeed(){
+      const speed = [100, 200, 300];
+      return speed[Math.floor(Math.random() * 4)];
+    }
 
+    //get position of enemy
+    getRow(){
+      const position =[60, 143, 226];
+      return position[Math.floor(Math.random() * 4)];
+    }
     // Draw the enemy on the screen, required method for game
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -106,25 +116,13 @@ function checkCollisions(){
     });
 }
 
-//get speed of enemy
-function getSpeed(){
-  const speed = [100, 200, 300];
-  return speed[Math.floor(Math.random() * 4)];
-}
-
-//get position of enemy
-function getPosition(){
-  const position =[60, 143, 226];
-  return position[Math.floor(Math.random() * 4)];
-}
-
 //set total enemies
 const totalEnemies = 8;
 //create list
 let allEnemies = [];
 //build list of enemies
 for(let i=0; i < totalEnemies; i++){
-  allEnemies.push(new Enemy(getSpeed(),getPosition()));
+  allEnemies.push(new Enemy());
 }
 
 // Place the player object in a variable called player
