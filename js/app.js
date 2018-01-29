@@ -59,6 +59,8 @@ class Player {
     this.sprite = 'images/char-boy.png';
     this.x = 202;
     this.y = 392;
+    this.wins = 0;
+    this.loses = 0;
   }
 
   update() {
@@ -67,6 +69,7 @@ class Player {
   width() {
       return Resources.get(this.sprite).width;
   }
+
   height() {
       return Resources.get(this.sprite).height;
   }
@@ -88,6 +91,8 @@ class Player {
         } else {
           this.y = 392;
           this.x = 202;
+          player.wins += 1;
+          winsCount.textContent = player.wins;
         }
         break;
       case 'right':
@@ -100,8 +105,6 @@ class Player {
   }
 };
 
-
-
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 
@@ -111,6 +114,8 @@ function checkCollisions(){
         if(player.x + player.width() >= enemy.x && player.x <= enemy.x + enemy.width()) {
               player.x = 202;
               player.y = 392;
+              player.loses += 1;
+              losesCount.textContent = player.loses;
         }
       }
     });
@@ -140,3 +145,7 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+//link the wins/loses sections
+const winsCount = document.querySelector('.wins-count');
+const losesCount = document.querySelector('.loses-count');
