@@ -105,9 +105,7 @@ class Player {
   }
 };
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-
+// Check for collision with enemies
 function checkCollisions(){
     allEnemies.forEach( enemy => {
       if(player.y == enemy.y){
@@ -120,6 +118,9 @@ function checkCollisions(){
       }
     });
 }
+
+// Now instantiate your objects.
+// Place all enemy objects in an array called allEnemies
 
 //set total enemies
 const totalEnemies = 8;
@@ -146,6 +147,6 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-//link the wins/loses sections
+// link the wins/loses sections
 const winsCount = document.querySelector('.wins-count');
 const losesCount = document.querySelector('.loses-count');
