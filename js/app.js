@@ -21,9 +21,16 @@ class Enemy {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
-        console.log('update enemy');
         this.x < 492 ? this.x += (this.speed * dt) : this.x = -101;
     };
+
+    width() {
+        return Resources.get(this.sprite).width;
+    }
+    height() {
+        return Resources.get(this.sprite).height;
+    }
+
 
     // Draw the enemy on the screen, required method for game
     render() {
@@ -41,11 +48,17 @@ class Player {
   constructor(){
     this.sprite = 'images/char-boy.png';
     this.x = 202;
-    this.y = 60 + 83 + 83 + 83 + 83;
+    this.y = 392;
   }
 
   update() {
-    console.log('update player');
+  }
+
+  width() {
+      return Resources.get(this.sprite).width;
+  }
+  height() {
+      return Resources.get(this.sprite).height;
   }
 
   // Draw the player on the screen, required method for game
@@ -77,8 +90,21 @@ class Player {
   }
 };
 
+
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
+
+function checkCollisions(){
+    allEnemies.forEach( enemy => {
+      if(player.y == enemy.y){
+        if(player.x + player.width() >= enemy.x && player.x <= enemy.x + enemy.width()) {
+              player.x = 202;
+              player.y = 392;
+        }
+      }
+    });
+}
 
 //get speed of enemy
 function getSpeed(){
