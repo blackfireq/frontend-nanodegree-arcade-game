@@ -91,8 +91,8 @@ class Player {
         } else {
           this.y = 392;
           this.x = 202;
-          player.wins += 1;
-          winsCount.textContent = player.wins;
+          this.wins += 1;
+          winsCount.textContent = this.wins;
         }
         break;
       case 'right':
@@ -109,7 +109,7 @@ class Player {
 function checkCollisions(){
     allEnemies.forEach( enemy => {
       if(player.y == enemy.y){
-        if(player.x + player.width() >= enemy.x && player.x <= enemy.x + enemy.width()) {
+        if(player.x + player.width() + 40 >= enemy.x && player.x  + 40 <= enemy.x + enemy.width()) {
               player.x = 202;
               player.y = 392;
               player.loses += 1;

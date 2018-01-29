@@ -5,7 +5,10 @@ Students should use this [rubric](https://review.udacity.com/#!/projects/2696458
 
 For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
 
-There are no requirements to play this game. It runs in the browser.
+There are no requirements to play this game.
+- It runs in the browser.
+- All you need to do is open the index file in the browser.
+- On most computers you can simply click on the index.html file.
 
 How to play the game.
 - Get the player to the water.
